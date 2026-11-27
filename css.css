@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/* Custom cursors from cursors-4u.com */
+@keyframes cursor-anim {
+    0.00% { cursor: url("assets/confused.webp") 16 16, auto; }
+    8.33% { cursor: url("assets/confused.webp") 16 16, auto; }
+    16.67% { cursor: url("assets/confused.webp") 16 16, auto; }
+    25.00% { cursor: url("assets/confused.webp") 16 16, auto; }
+    33.33% { cursor: url("assets/confused.webp") 16 16, auto; }
+    41.67% { cursor: url("assets/confused.webp") 16 16, auto; }
+    50.00% { cursor: url("assets/confused.webp") 16 16, auto; }
+    58.33% { cursor: url("assets/confused.webp") 16 16, auto; }
+    66.67% { cursor: url("assets/confused.webp") 16 16, auto; }
+    75.00% { cursor: url("assets/confused.webp") 16 16, auto; }
+    83.33% { cursor: url("assets/confused.webp") 16 16, auto; }
+    91.67% { cursor: url("assets/confused.webp") 16 16, auto; }
+}
+
+html { animation: cursor-anim 996ms step-end infinite; }
+
+a, button, input, textarea, label, [role=button], select, option {
+    cursor: inherit !important
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
 
+    <link rel="stylesheet" href="css.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -25,15 +26,36 @@
         h1 { font-size: 42px; }
         p { color: #999; }
 
-        /* ── Custom cursors ─────────────────────────────── */
-        /* Global default → confused icon */
-        html {
-            cursor: url("assets/confused.webp") 16 16, auto;
+        /* ── Grid Button ─────────────────────────────── */
+        #grid-btn {
+            position: relative;
+            width: 220px;
+            height: 64px;
+            margin-top: 32px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            color: #bbb;
+            font-size: 15px;
+            font-family: inherit;
+            cursor: pointer;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
         }
-
-        /* WIP / not-yet-released elements → select icon */
-        .wip-item, [data-cursor="wip"] {
-            cursor: url("assets/select.webp") 16 16, crosshair !important;
+        #grid-btn:hover { border-color: rgba(208,0,0,0.5); }
+        #grid-btn canvas {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #grid-btn:hover canvas { opacity: 1; }
+        #grid-btn .btn-text {
+            position: relative; z-index: 2;
+            pointer-events: none; line-height: 64px;
         }
 
         /* ── WIP badge ──────────────────────────────────── */
@@ -75,7 +97,7 @@
         </div>
         -->
 
-        <!-- Example: regular link with cursor.webp hover -->
+        <!-- Example: regular link -->
         <!--
         <a href="#">View more</a>
         -->
