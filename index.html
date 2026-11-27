@@ -5,52 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
 
-    <style>
-        body {
-            background: #101014;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .background-img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90vw;
-            max-height: 90vh;
-            opacity: 0.35;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .container {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-size: 42px;
-        }
-
-        p {
-            color: #999;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="with-grid">
+    <canvas id="grid-canvas"></canvas>
+
     <img class="background-img" src="mygoon.png" alt="my goon">
     <div class="container">
         <h1>Hello World.</h1>
         <p>My first website is online.</p>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

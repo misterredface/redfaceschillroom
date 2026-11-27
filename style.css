@@ -1,0 +1,92 @@
+/* ── Reset & Canvas ─────────────────────────────────── */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #101014;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+p {
+    color: #999;
+}
+
+/* ── Grid Button ───────────────────────────────────── */
+#grid-btn {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    margin-top: 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    color: #ccc;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    overflow: hidden;          /* canvas clips to button bounds */
+    transition: border-color 0.3s ease;
+    z-index: 10;
+}
+
+#grid-btn:hover {
+    border-color: rgba(255,32,32,0.4);
+}
+
+#grid-btn canvas {
+    position: absolute;
+    inset: 0;                /* fills entire button */
+    width: 100%;
+    height: 100%;
+    display: none;             /* hidden until hover */
+}
+
+#grid-btn.active canvas {
+    display: block;
+}
+
+#grid-btn .btn-text {
+    position: relative;
+    z-index: 2;              /* sits above the grid */
+    pointer-events: none;    /* clicks pass through */
+    transition: opacity 0.2s ease;
+}
+
+#grid-btn.active .btn-text {
+    opacity: 0.85;           /* slightly dim text over bright grid */
+}
