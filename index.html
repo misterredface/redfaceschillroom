@@ -25,44 +25,64 @@
         h1 { font-size: 42px; }
         p { color: #999; }
 
-        /* ── Grid Button ─────────────────────────────── */
-        #grid-btn {
-            position: relative; width: 220px; height: 64px;
-            margin-top: 32px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 14px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(8px);
-            color: #bbb; font-size: 15px; font-family: inherit;
-            cursor: pointer; overflow: hidden;
-            transition: border-color 0.3s ease;
+        /* ── Custom cursors ─────────────────────────────── */
+        /* Default cursor */
+        body { cursor: url("assets/loading.webp") 16 16, auto; }
+
+        /* Interactive elements — buttons, links, inputs */
+        a, button, input, textarea, [data-cursor="pointer"],
+        #grid-btn, #grid-btn:hover {
+            cursor: url("assets/cursor.webp") 16 16, pointer !important;
         }
-        #grid-btn:hover { border-color: rgba(208,0,0,0.5); }
-        #grid-btn canvas {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            display: block;
-            opacity: 0;
-            pointer-events: none;
+
+        /* WIP / Coming Soon items — uses select cursor */
+        .wip-item, [data-cursor="select"] {
+            cursor: url("assets/select.webp") 16 16, auto !important;
         }
-        #grid-btn:hover canvas {
-            opacity: 1;
+
+        /* ── WIP badge ──────────────────────────────────── */
+        .wip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #880000;
+            user-select: none;
         }
-        #grid-btn .btn-text {
-            position: relative; z-index: 2;
-            pointer-events: none; line-height: 64px;
+        .wip-badge img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
-    <img class="background-img" src="mygoon.png" alt="my goon">
+    <img class="background-img" src="assets/image.png" alt="">
     <div class="container">
         <h1>Hello World.</h1>
         <p>My first website is online.</p>
+
+        <!-- Grid Button -->
         <button id="grid-btn">
             <canvas></canvas>
             <span class="btn-text">Hover Me</span>
         </button>
+
+        <!-- Example: WIP tag — uncomment when you have one to show -->
+        <!--
+        <div class="wip-item wip-badge">
+            <img src="assets/select.webp" alt="">
+            <span>Coming soon</span>
+        </div>
+        -->
+
+        <!-- Example: regular link with cursor.webp hover -->
+        <!--
+        <a href="#">View more</a>
+        -->
     </div>
 
     <script src="grid-button.js"></script>
