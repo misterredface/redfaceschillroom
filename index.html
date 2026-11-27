@@ -41,9 +41,13 @@
         #grid-btn canvas {
             position: absolute; inset: 0;
             width: 100%; height: 100%;
-            display: none;
+            display: block;
+            opacity: 0;
+            pointer-events: none;
         }
-        #grid-btn:hover canvas { display: block; }
+        #grid-btn:hover canvas {
+            opacity: 1;
+        }
         #grid-btn .btn-text {
             position: relative; z-index: 2;
             pointer-events: none; line-height: 64px;
