@@ -32,9 +32,7 @@
     }
 
     // ── Config ──────────────────────────────────────────
-    var NUM_LINES  = 20;
-    var PTS_PER_LN = 10;
-    var COLORS     = ["#220000","#440000","#880000","#D00000","#FF2020"];
+    var COLORS = ["#220000","#440000","#880000","#D00000","#FF2020"];
 
     // ── State ───────────────────────────────────────────
     var btnEl, cvs, ctx;
@@ -45,10 +43,9 @@
     var alphaVal = 0, targetAlpha = 0;
     var initialized = false;
 
-    // ── Build grid (simple, fixed 220x64) ───────────────
+    // ── Build grid (fixed 220x64) ───────────────────────
     function buildGrid() {
-        var pad = 40, gW = 220 + 80, gH = 64 + 80;
-        var cW = gW / 20, cH = gH / 10;
+        var pad = 40, cW = 300 / 20, cH = 144 / 10;
         points = [];
         for (var li = 0; li <= 20; li++) {
             var row = [];
@@ -162,7 +159,6 @@
     // ── Activate ────────────────────────────────────────
     function activate(e) {
         if (!initialized) {
-            // FIXED: hardcoded CSS content-box size
             cvs.width = 220; cvs.height = 64;
             ctx = cvs.getContext("2d");
             buildGrid();
@@ -174,6 +170,7 @@
         smX = mouseX; smY = mouseY; mSpeed = 0;
 
         targetAlpha = 1; alphaVal = 0;
+        cvs.style.opacity = "1";  // Make visible immediately
         elapsedSecs = 0; prevTs = performance.now();
         animId = requestAnimationFrame(tick);
     }
