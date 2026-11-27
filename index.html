@@ -1,107 +1,462 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>mr.redface</title>
 
     <link rel="stylesheet" href="cursor.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #101014; color: white;
-            font-family: Arial, sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; position: relative; overflow: hidden;
-        }
-        .background-img {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90vw; max-height: 90vh;
-            opacity: 0.35; z-index: 0; pointer-events: none;
-        }
-        .container {
-            text-align: center; position: relative; z-index: 1;
-        }
-        h1 { font-size: 42px; }
-        p { color: #999; }
-
-        /* ── Grid Button ─────────────────────────────── */
-        #grid-btn {
-            position: relative;
-            width: 220px;
-            height: 64px;
-            margin-top: 32px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 14px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(8px);
-            color: #bbb;
-            font-size: 15px;
-            font-family: inherit;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-        #grid-btn:hover { border-color: rgba(208,0,0,0.5); }
-        #grid-btn canvas {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            display: block;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        #grid-btn:hover canvas { opacity: 1; }
-        #grid-btn .btn-text {
-            position: relative; z-index: 2;
-            pointer-events: none; line-height: 64px;
-        }
-
-        /* ── WIP badge ──────────────────────────────────── */
-        .wip-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 8px;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: #880000;
-            user-select: none;
-        }
-        .wip-badge img {
-            width: 16px;
-            height: 16px;
-            opacity: 0.7;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <img class="background-img" src="assets/image.png" alt="">
-    <div class="container">
-        <h1>Hello World.</h1>
-        <p>My first website is online.</p>
-
-        <!-- Grid Button -->
-        <button id="grid-btn">
-            <canvas></canvas>
-            <span class="btn-text">Hover Me</span>
-        </button>
-
-        <!-- Example: WIP tag — uncomment when you have one to show -->
-        <!--
-        <div class="wip-item wip-badge">
-            <img src="assets/select.webp" alt="">
-            <span>Coming soon</span>
+    <div id="mobile-warning" class="mobile-warning">
+        <div class="mobile-warning-content">
+            <h2>Desktop Recommended</h2>
+            <p>
+                This website has phone support, but it is mostly designed for desktop.
+                Please enter with a PC or laptop for the best experience.
+            </p>
+            <p class="warning-note">
+                Note: The phone version is currently a bit buggy.
+            </p>
+            <button id="continue-btn" class="btn-continue" type="button">Continue</button>
         </div>
-        -->
-
-        <!-- Example: regular link -->
-        <!--
-        <a href="#">View more</a>
-        -->
     </div>
 
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+
+    <div class="nav-wrapper">
+        <nav class="nav-bar">
+            <div class="nav-highlight">
+                <canvas></canvas>
+            </div>
+
+            <a href="#" class="nav-item active"><span>Main</span></a>
+            <a href="#" class="nav-item"><span>Projects <small>(WIP)</small></span></a>
+            <a href="#" class="nav-item"><span>Socials <small>(WIP)</small></span></a>
+            <a href="#" class="nav-item"><span>Playlist <small>(WIP)</small></span></a>
+            <a href="#" class="nav-item"><span>Tools <small>(WIP)</small></span></a>
+            <a href="#" class="nav-item"><span>Portfolio <small>(WIP)</small></span></a>
+        </nav>
+    </div>
+
+    <img class="background-img" src="assets/image.png" alt="Background Image">
+
+
+    <main class="site-container">
+
+
+        <section id="intro" class="section reveal">
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span>Currently building something.</span>
+                    </div>
+                    <h1 class="hero-title">Hey, I'm Matin.</h1>
+                    <p class="hero-subtitle">Most people know me as <strong class="text-red">mr.redface</strong>.</p>
+                    <p class="hero-desc">
+                        I'm a 16-year-old computer science student who spends a lot of time building things,
+                        experimenting with code, messing around with creative software, and occasionally breaking stuff
+                        in the process.
+                    </p>
+                    <p class="hero-desc">
+                        I'm still figuring things out, learning new skills, and working on projects that I actually
+                        enjoy. I experiment, I create, and I learn as I go.
+                    </p>
+                </div>
+                <div class="intro-photo-wrapper">
+                    <div class="mosaic-container" tabindex="0" role="button" aria-label="Reveal profile picture">
+                        <canvas id="mosaic-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="skills" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">02. Abilities</span>
+                <h2>Skills & Tools</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Creative & Design</h3>
+                    <div class="skill-list">
+                        <div class="grid-box" style="--grid-c1: #31A8FF; --grid-c2: #001E36;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path fill="#31A8FF" d="M0 0h24v24H0z" /><text x="2" y="16" fill="#001E36"
+                                        font-family="Arial" font-weight="bold" font-size="12">Ps</text>
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">Photoshop</span>
+                                    <span class="skill-level">Good</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-box" style="--grid-c1: #9999FF; --grid-c2: #00005B;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path fill="#9999FF" d="M0 0h24v24H0z" /><text x="2" y="16" fill="#00005B"
+                                        font-family="Arial" font-weight="bold" font-size="12">Ae</text>
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">After Effects</span>
+                                    <span class="skill-level">Upper-intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-box" style="--grid-c1: #EA7600; --grid-c2: #00005B;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="#EA7600" />
+                                    <circle cx="12" cy="12" r="5" fill="#fff" />
+                                    <circle cx="12" cy="12" r="2" fill="#265787" />
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">Blender</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <div class="skill-list">
+                        <div class="grid-box" style="--grid-c1: #E34F26; --grid-c2: #F06529;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path fill="#E34F26" d="M1.5 1.5h21l-2 20H3.5z" />
+                                    <path fill="#FFF"
+                                        d="M12 3.5v17h7.2L20.6 3.5zM12 8.5h4.5l-.3 3.5h-4.2v3h3.9l-.4 4.5H12v3.1h6.4L19 8.5z" />
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML</span>
+                                    <span class="skill-level">Structure</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-box" style="--grid-c1: #1572B6; --grid-c2: #33A9DC;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path fill="#1572B6" d="M1.5 1.5h21l-2 20H3.5z" />
+                                    <path fill="#FFF"
+                                        d="M12 3.5v17h7.2L20.6 3.5zM12 8.5h4.5l-.3 3.5h-4.2v3h3.9l-.4 4.5H12v3.1h6.4L19 8.5z" />
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">CSS</span>
+                                    <span class="skill-level">Styling & Animation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-box" style="--grid-c1: #F7DF1E; --grid-c2: #FFDE00;">
+                            <canvas></canvas>
+                            <div class="skill-item">
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path fill="#F7DF1E" d="M0 0h24v24H0z" />
+                                    <path fill="#000"
+                                        d="M12 22c-2 0-3-1-4-2l2-2c.5 1 1 1.5 2 1.5s1.5-.5 1.5-1.5v-8h3v8c0 2.5-1.5 4-4.5 4zM5 22c-2 0-3-1-3.5-2.5l2.5-1.5c.5 1 1 1.5 2 1.5s1-.5 1-1v-8h3v8c0 2.5-1.5 4-5 4z" />
+                                </svg>
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-level">Interactive Logic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="activities" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">03. Current Focus</span>
+                <h2>What I Do</h2>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h4 class="grid-text-bg" style="--grid-c1: #b23a3a; --grid-c2: #4a1212;">
+                        <canvas></canvas>
+                        <span>Building Websites</span>
+                    </h4>
+                    <p>Experimenting with layouts, interactions, and code.</p>
+                </div>
+                <div class="activity-card">
+                    <h4 class="grid-text-bg" style="--grid-c1: #6a9a7c; --grid-c2: #163023;">
+                        <canvas></canvas>
+                        <span>Learning Programming</span>
+                    </h4>
+                    <p>Problem-solving, fundamentals, and creative logic.</p>
+                </div>
+                <div class="activity-card">
+                    <h4 class="grid-text-bg" style="--grid-c1: #9999FF; --grid-c2: #00005B;">
+                        <canvas></canvas>
+                        <span>Game Development</span>
+                    </h4>
+                    <p>Developing ideas, mechanics, and 3D assets.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="projects" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">04. Experiments</span>
+                <h2>Projects</h2>
+            </div>
+            <div class="project-placeholder-grid">
+                <div class="project-card">
+                    <span class="tag">Website</span>
+                    <h4 class="grid-text-bg" style="--grid-c1: #b23a3a; --grid-c2: #4a1212;">
+                        <canvas></canvas>
+                        <span>Coming Soon</span>
+                    </h4>
+                    <p>Placeholder for a future project.</p>
+                </div>
+                <div class="project-card">
+                    <span class="tag">Game</span>
+                    <h4 class="grid-text-bg" style="--grid-c1: #6a9a7c; --grid-c2: #163023;">
+                        <canvas></canvas>
+                        <span>Coming Soon</span>
+                    </h4>
+                    <p>Placeholder for a future experiment.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="goals" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">05. Ambitions</span>
+                <h2>Goals</h2>
+            </div>
+            <div class="goals-list">
+                <div class="goal-item">
+                    <span class="goal-marker"></span>
+                    <p class="goal-text">Become a skilled software and game developer.</p>
+                </div>
+                <div class="goal-item">
+                    <span class="goal-marker"></span>
+                    <p class="goal-text">Build and publish my own games.</p>
+                </div>
+                <div class="goal-item">
+                    <span class="goal-marker"></span>
+                    <p class="goal-text">Grow a successful YouTube channel.</p>
+                </div>
+                <div class="goal-item">
+                    <span class="goal-marker"></span>
+                    <p class="goal-text">Study and build a future abroad.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="likes" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">06. Interests</span>
+                <h2>Things I Like</h2>
+            </div>
+
+            <div class="web-grid">
+
+                <div class="web-category">
+                    <h4 class="web-title">Music</h4>
+                    <div class="web-box">
+                        <div class="web-bg"></div>
+                        <svg class="web-lines"></svg>
+                        <div class="web-tag tag-red" style="--tx: 15%; --ty: 20%;">Metal</div>
+                        <div class="web-tag tag-red" style="--tx: 60%; --ty: 15%;">Altenative</div>
+                        <div class="web-tag tag-red" style="--tx: 35%; --ty: 60%;">Hardstyle/Jumpstyle</div>
+                        <div class="web-tag tag-red" style="--tx: 34%; --ty: 10%;">Indie</div>
+                        <div class="web-tag tag-red" style="--tx: 70%; --ty: 70%;">Almost anything</div>
+                    </div>
+                </div>
+
+
+                <div class="web-category">
+                    <h4 class="web-title">Gaming</h4>
+                    <div class="web-box">
+                        <div class="web-bg"></div>
+                        <svg class="web-lines"></svg>
+                        <div class="web-tag tag-green" style="--tx: 20%; --ty: 30%;">Minecraft</div>
+                        <div class="web-tag tag-green" style="--tx: 65%; --ty: 25%;">Indie Games</div>
+                        <div class="web-tag tag-green" style="--tx: 45%; --ty: 75%;">Mechanics</div>
+                    </div>
+                </div>
+
+
+                <div class="web-category">
+                    <h4 class="web-title">Art & Creativity</h4>
+                    <div class="web-box">
+                        <div class="web-bg"></div>
+                        <svg class="web-lines"></svg>
+                        <div class="web-tag tag-lightred" style="--tx: 25%; --ty: 20%;">3D modeling</div>
+                        <div class="web-tag tag-lightred" style="--tx: 70%; --ty: 40%;">Digital Art</div>
+                        <div class="web-tag tag-lightred" style="--tx: 20%; --ty: 70%;">Pixel Art</div>
+                    </div>
+                </div>
+
+
+                <div class="web-category">
+                    <h4 class="web-title">Other</h4>
+                    <div class="web-box">
+                        <div class="web-bg"></div>
+                        <svg class="web-lines"></svg>
+                        <div class="web-tag tag-grey" style="--tx: 15%; --ty: 15%;">Cats</div>
+                        <div class="web-tag tag-grey" style="--tx: 60%; --ty: 20%;">Anime</div>
+                        <div class="web-tag tag-grey" style="--tx: 25%; --ty: 65%;">Gym</div>
+                        <div class="web-tag tag-grey" style="--tx: 65%; --ty: 75%;">Creepypasta</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="dislikes" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">07. Red Flags</span>
+                <h2>Things I Dislike</h2>
+            </div>
+            <ul class="dislikes-list">
+                <li class="rage-item">Smoking</li>
+                <li class="rage-item">Fake personalities</li>
+                <li class="rage-item">Unnecessary drama</li>
+                <li class="rage-item">Discouraging others</li>
+            </ul>
+        </section>
+
+        <div class="divider"></div>
+
+
+        <section id="personal" class="section reveal">
+            <div class="section-header">
+                <span class="section-label">08. Details</span>
+                <h2>Personal</h2>
+            </div>
+            <div class="personal-grid">
+                <div class="personal-item">
+                    <span class="personal-label">Identity</span>
+                    <span class="personal-value text-red">mr.redface</span>
+                </div>
+                <div class="personal-item">
+                    <span class="personal-label">Status</span>
+                    <span class="personal-value">Learning & Experimenting</span>
+                </div>
+                <div class="personal-item">
+                    <span class="personal-label">Favorite Software</span>
+                    <span class="personal-value">Blender, Photoshop</span>
+                </div>
+                <div class="personal-item">
+                    <span class="personal-label">Current Obsession</span>
+                    <span class="personal-value">AI-assisted development</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <p>&copy; All rights reserved by <span class="text-red">mr.redface</span>.</p>
+    </footer>
+
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+
     <script src="grid-button.js"></script>
+    <script src="main.js"></script>
+
+
+    <script>
+        document.getElementById('continue-btn').addEventListener('click', () => {
+            document.getElementById('mobile-warning').classList.add('hidden');
+        });
+
+        const navBar = document.querySelector('.nav-bar');
+        const highlight = document.querySelector('.nav-highlight');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        function moveHighlight(element) {
+            if (!element) return;
+            const navRect = navBar.getBoundingClientRect();
+            const elRect = element.getBoundingClientRect();
+            const scrollOffset = navBar.scrollLeft;
+            highlight.style.width = `${elRect.width}px`;
+            highlight.style.transform = `translateX(${elRect.left - navRect.left + scrollOffset}px)`;
+        }
+
+        navItems.forEach(item => {
+            item.addEventListener('pointerenter', () => moveHighlight(item));
+            item.addEventListener('click', (e) => moveHighlight(item));
+        });
+
+        navBar.addEventListener('pointerleave', () => {
+            const activeItem = document.querySelector('.nav-item.active');
+            moveHighlight(activeItem);
+        });
+
+        let scrollTimeout;
+        navBar.addEventListener('scroll', () => {
+            highlight.style.transition = 'none';
+            const currentItem = document.querySelector('.nav-item:hover') || document.querySelector('.nav-item.active');
+            if (currentItem) moveHighlight(currentItem);
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                highlight.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }, 100);
+        });
+
+        window.addEventListener('load', () => {
+            moveHighlight(document.querySelector('.nav-item.active'));
+        });
+    </script>
 </body>
+
 </html>
