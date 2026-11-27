@@ -81,5 +81,5 @@ label,
 [role=button],
 select,
 option {
-    cursor: inherit !important
+    cursor: url("assets/select.webp") 16 16, pointer !important;
 }
