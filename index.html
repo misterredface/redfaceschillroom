@@ -26,18 +26,19 @@
         p { color: #999; }
 
         /* ── Custom cursors ─────────────────────────────── */
-        /* Default cursor */
-        body { cursor: url("assets/loading.webp") 16 16, auto; }
+        /* Global default → loading icon */
+        html {
+            cursor: url("assets/loading.webp") 16 16, auto;
+        }
 
-        /* Interactive elements — buttons, links, inputs */
-        a, button, input, textarea, [data-cursor="pointer"],
-        #grid-btn, #grid-btn:hover {
+        /* Hoverable / interactive elements → cursor icon */
+        a, button, input, textarea, [data-cursor="hover"] {
             cursor: url("assets/cursor.webp") 16 16, pointer !important;
         }
 
-        /* WIP / Coming Soon items — uses select cursor */
-        .wip-item, [data-cursor="select"] {
-            cursor: url("assets/select.webp") 16 16, auto !important;
+        /* WIP / not-yet-released elements → select icon */
+        .wip-item, [data-cursor="wip"] {
+            cursor: url("assets/select.webp") 16 16, crosshair !important;
         }
 
         /* ── WIP badge ──────────────────────────────────── */
